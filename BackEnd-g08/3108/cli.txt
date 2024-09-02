@@ -1,0 +1,66 @@
+TASKS:
+
+1.Query to find documents not matching age 20 and grade "A"
+2.Update a single student's grade
+3.Update multiple students' grades
+4.Find and update a student's marks
+5.Replace a student's document with new details
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+TASKS: Print students with either age equal to 20 or marks equal to 71
+==> db.student.find({$or: [{age: 20}, {marks: 71}]})
+
+TASKS: Print students whose age is not equal to 20
+==> db.student.find({age: {$not: {$eq: 20}}})
+
+TASKS: Print students whose age is not equal to 20 and grade is not equal to A
+==> db.student.find({$nor: [{age: 20}, {grade: "A"}]})
+
+
+
+
+
+db.collection.UpdateOne():
+
+db.Students.updateOne({name:"Vikram Rana"},{$set: {grade:"B"}})
+
+db.collection.updateMany():
+
+db.Students.updateMany({ grade: "C+" },{ $set: { grade: "B" }});
+
+
+db.collection.findOneAndUpdate():
+
+db.Students.findOneAndUpdate({ name: "Ishika Verma" },{ $set: { marks: 90 } });
+
+db.collection.replaceOne():
+
+db.Students.replaceOne({ name: "Vihaan Singh" },{ name: "Vihaan Singh",age: 18,marks: 75,grade: "B+"});
+
+db.student.find({
+   $nor: [
+      { age: 20 },       
+      { grade: "A" }     
+   ]
+});
+
+
+db.collection.updateOne():
+
+db.Students.updateOne({ name: "Vikram Rana" },{ $set: { grade: "B" } });
+
+db.collection.updateMany():
+
+db.Students.updateMany({ grade: "C+" },{ $set: { grade: "B" }});
+
+db.collection.findOneAndUpdate():
+
+db.Students.findOneAndUpdate({ name: "Ishika Verma" },{ $set: { marks: 90 }});
+
+db.collection.replaceOne():
+
+db.Students.replaceOne({ name: "Vihaan Singh" },{ name: "Vihaan Singh",age: 18,marks: 75,grade: "B+"});

@@ -1,0 +1,146 @@
+TASKS:
+
+1. find the data where student age=22 marks=90,
+2. find the students marks more than 80 and age =<18,
+3. find students with A+ grades,
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+db.students.insertMany([
+...    { name: "Alice", age: 22, marks: 90, grade: "A+" },
+...    { name: "Bob", age: 18, marks: 85, grade: "A" },
+...    { name: "Charlie", age: 17, marks: 88, grade: "A" },
+...    { name: "David", age: 22, marks: 70, grade: "B" },
+...    { name: "Eve", age: 20, marks: 92, grade: "A+" },
+...    { name: "Frank", age: 19, marks: 65, grade: "B" },
+...    { name: "Grace", age: 18, marks: 95, grade: "A+" },
+...    { name: "Hannah", age: 17, marks: 82, grade: "A" },
+...    { name: "Ivan", age: 22, marks: 90, grade: "A+" },
+...    { name: "Judy", age: 18, marks: 75, grade: "B" }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('66d0339e7fa42fe18546b799'),
+    '1': ObjectId('66d0339e7fa42fe18546b79a'),
+    '2': ObjectId('66d0339e7fa42fe18546b79b'),
+    '3': ObjectId('66d0339e7fa42fe18546b79c'),
+    '4': ObjectId('66d0339e7fa42fe18546b79d'),
+    '5': ObjectId('66d0339e7fa42fe18546b79e'),
+    '6': ObjectId('66d0339e7fa42fe18546b79f'),
+    '7': ObjectId('66d0339e7fa42fe18546b7a0'),
+    '8': ObjectId('66d0339e7fa42fe18546b7a1'),
+    '9': ObjectId('66d0339e7fa42fe18546b7a2')
+  }
+}
+test> db.students.find({ age: 22, marks: 90 }).pretty()
+[
+  {
+    _id: ObjectId('66d0339e7fa42fe18546b799'),
+    name: 'Alice',
+    age: 22,
+    marks: 90,
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66d0339e7fa42fe18546b7a1'),
+    name: 'Ivan',
+    age: 22,
+    marks: 90,
+    grade: 'A+'
+  }
+]
+test> db.students.find({ marks: { $gt: 80 }, age: { $lte: 18 } }).pretty()
+[
+  {
+    _id: ObjectId('66d0339e7fa42fe18546b79a'),
+    name: 'Bob',
+    age: 18,
+    marks: 85,
+    grade: 'A'
+  },
+  {
+    _id: ObjectId('66d0339e7fa42fe18546b79b'),
+    name: 'Charlie',
+    age: 17,
+    marks: 88,
+    grade: 'A'
+  },
+  {
+    _id: ObjectId('66d0339e7fa42fe18546b79f'),
+    name: 'Grace',
+    age: 18,
+    marks: 95,
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66d0339e7fa42fe18546b7a0'),
+    name: 'Hannah',
+    age: 17,
+    marks: 82,
+    grade: 'A'
+  }
+]
+test> db.students.find({ grade: "A+" }).pretty()
+[
+  {
+    _id: ObjectId('66d0339e7fa42fe18546b799'),
+    name: 'Alice',
+    age: 22,
+    marks: 90,
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66d0339e7fa42fe18546b79d'),
+    name: 'Eve',
+    age: 20,
+    marks: 92,
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66d0339e7fa42fe18546b79f'),
+    name: 'Grace',
+    age: 18,
+    marks: 95,
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66d0339e7fa42fe18546b7a1'),
+    name: 'Ivan',
+    age: 22,
+    marks: 90,
+    grade: 'A+'
+  }
+]
+test> db.students.find({ grade: "A+" }).pretty()
+[
+  {
+    _id: ObjectId('66d0339e7fa42fe18546b799'),
+    name: 'Alice',
+    age: 22,
+    marks: 90,
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66d0339e7fa42fe18546b79d'),
+    name: 'Eve',
+    age: 20,
+    marks: 92,
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66d0339e7fa42fe18546b79f'),
+    name: 'Grace',
+    age: 18,
+    marks: 95,
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66d0339e7fa42fe18546b7a1'),
+    name: 'Ivan',
+    age: 22,
+    marks: 90,
+    grade: 'A+'
+  }
+]
